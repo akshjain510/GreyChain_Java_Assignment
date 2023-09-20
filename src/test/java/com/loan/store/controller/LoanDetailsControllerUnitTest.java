@@ -33,6 +33,7 @@ public class LoanDetailsControllerUnitTest {
     void testGetLoanByLoanId() {
         ResponseWrapper responseWrapper = restTemplate.getForObject("/loans/1", ResponseWrapper.class);
         assertEquals(200, responseWrapper.getCode());
+        assertEquals(Boolean.TRUE, responseWrapper.getData().containsKey("alert"));
         assertEquals(Boolean.TRUE, responseWrapper.getData().containsKey("loan"));
     }
 

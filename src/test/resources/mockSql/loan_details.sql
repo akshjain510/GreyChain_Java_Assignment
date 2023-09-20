@@ -52,7 +52,7 @@ CREATE TABLE loan_details (
 
 INSERT INTO loan_details (customer_id, lender_id, amount, remaining_amount, payment_date, interest_per_day_in_percent, due_date, penalty_per_day_in_percent, cancel)
 VALUES
-(1, 1, 1500.00, 1400.00, '2023-09-20', 2.5, '2023-10-20', 0.5, false),
+(1, 1, 1500.00, 1400.00, '2022-09-20', 2.5, '2022-10-20', 0.5, false),
 (2, 2, 2000.00, 1900.00, '2023-09-21', 3.0, '2023-10-21', 0.6, false),
 (3, 2, 1800.00, 1750.00, '2023-09-22', 2.0, '2023-10-22', 0.4, true),
 (2, 3, 2200.00, 1950.00, '2023-09-23', 2.8, '2023-10-23', 0.3, false),

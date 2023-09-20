@@ -30,7 +30,7 @@ public class LoanDetailsController {
 
     @RequestMapping(value = "/{loanId}", method = RequestMethod.GET)
     public ResponseWrapper getLoanByLoanId(@PathVariable Long loanId){
-        return ResponseWrapper.getSuccessResponse(Map.of("loan", loanService.getLoanByLoanId(loanId)), "Loan Details");
+        return ResponseWrapper.getSuccessResponse(loanService.getLoanByLoanId(loanId), "Loan Details");
     }
 
     @RequestMapping(value = "/customer/{customerId}", method = RequestMethod.GET)
@@ -39,7 +39,7 @@ public class LoanDetailsController {
     }
 
     @RequestMapping(value = "/lender/{lenderId}", method = RequestMethod.GET)
-    public ResponseWrapper getLoanBylenderId(@PathVariable Long lenderId){
+    public ResponseWrapper getLoanByLenderId(@PathVariable Long lenderId){
         return ResponseWrapper.getSuccessResponse(Map.of("loan", loanService.getLoanByLenderId(lenderId)), "Loan Details");
     }
 

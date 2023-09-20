@@ -13,6 +13,8 @@ import com.loan.store.service.helper.LoanHelper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -43,12 +45,17 @@ public class LoanService {
         return loanDetailsRepository.getAllLoanDetails();
     }
 
-    public LoanDetailResponseDto getLoanByLoanId(Long loanId){
+    public HashMap<String, Object> getLoanByLoanId(Long loanId){
         LoanDetailResponseDto responseDto = loanDetailsRepository.getLoanByLoanId(loanId);
         if(responseDto==null){
-            return new LoanDetailResponseDto();
+            return null;
         }
-        return loanDetailsRepository.getLoanByLoanId(loanId);
+        HashMap<String, Object> loan = new HashMap<>();
+        if(responseDto.getDueDate().isBefore(LocalDate.now())) {
+            loan.put("alert", "Loan has crossed due date");
+        }
+        loan.put("loan", responseDto);
+        return loan;
     }
 
     public List<LoanDetailResponseDto> getLoanByCustomerId(Long customerId){
